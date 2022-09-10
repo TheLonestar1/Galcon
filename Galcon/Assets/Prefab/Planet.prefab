@@ -78,7 +78,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5442371494618036043
 MonoBehaviour:
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284045657
-  m_fontColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 5442371495189471949}
   - component: {fileID: 5442371495189471948}
   - component: {fileID: 5442371495189471951}
+  - component: {fileID: 921770246}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -274,3 +275,18 @@ CircleCollider2D:
   m_Offset: {x: 0.020486653, y: 0}
   serializedVersion: 2
   m_Radius: 0.6872036
+--- !u!114 &921770246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442371495189471950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf74dbe66cc0884f908c174efef0ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shipCounter: 5
+  _timer: 1
+  _addShips: 5

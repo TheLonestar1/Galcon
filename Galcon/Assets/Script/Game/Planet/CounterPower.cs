@@ -17,7 +17,7 @@ public class CounterPower : MonoBehaviour
     {
         _fieldText = GetComponentInChildren<TMP_Text>();
         _fieldText.text = _shipCounter.ToString();
-        if (this.gameObject.tag != "neutral")
+        if (this.gameObject.tag != "Neutral")
             StartCoroutine(Counter());
     }
 
