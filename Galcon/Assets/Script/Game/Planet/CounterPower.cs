@@ -5,11 +5,11 @@ using TMPro;
 public class CounterPower : MonoBehaviour
 {
     [SerializeField]
-    int _shipCounter;
+    private int _shipCounter;
     [SerializeField,Range(0,10)]
-    float _timer;
+    private float _timer;
     [SerializeField]
-    int _addShips;
+    private int _addShips;
     // Start is called before the first frame update
     public int ships { get { return _shipCounter; } set { _shipCounter = value; } }
     TMP_Text _fieldText;
@@ -20,7 +20,15 @@ public class CounterPower : MonoBehaviour
         if (this.gameObject.tag != "Neutral")
             StartCoroutine(Counter());
     }
-
+    public void DecreseCoutner(int damage)
+    {
+        _shipCounter -= damage;
+        _fieldText.text = _shipCounter.ToString();
+        if (_shipCounter <= 0)
+        {
+            this.GetComponent<Player>().changeSide("Player");
+        }
+    }
     IEnumerator Counter()
     {
         while(true)

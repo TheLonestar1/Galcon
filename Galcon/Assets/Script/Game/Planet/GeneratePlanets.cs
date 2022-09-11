@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class GeneratePlanets : MonoBehaviour
 {
     [SerializeField]
-    LevelData _levelData;
+    private LevelData _levelData;
     [SerializeField]
-    GameObject _planteObject;
+    private GameObject _planteObject;
 
-    List<Vector2> _planetPosition;
-    Vector2 _pointLeftBottom, _pointRightTop;
-    List<GameObject> _planets;
+    private List<Vector2> _planetPosition;
+    private Vector2 _pointLeftBottom, _pointRightTop;
+    private List<GameObject> _planets;
     private void Start()
     {
         _planetPosition = new List<Vector2>();
