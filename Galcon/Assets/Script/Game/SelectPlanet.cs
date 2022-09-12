@@ -9,9 +9,9 @@ public class SelectPlanet : MonoBehaviour
     [SerializeField]
     GameObject _ships;
     [SerializeField]
-    private float _koefmargin;
+    SpawnUtility _spawnUtility;
     [SerializeField]
-    private float _timeBeetweenSpawn;
+    private LayerMask _layerMask;
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -27,8 +27,11 @@ public class SelectPlanet : MonoBehaviour
             }
             else if(hit.collider != null && hit.collider.tag != "Player")
             {
-                StartCoroutine(SpawnShips(hit.collider.transform.position));
-                
+                foreach (GameObject planet in _planetList)
+                {
+                    if(planet.tag == "Player")
+                     StartCoroutine(_spawnUtility.SpawnShips(hit.collider.transform.position,planet));
+                }
             }
             else
             {
@@ -41,29 +44,9 @@ public class SelectPlanet : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnShips(Vector3 targetPoint)
-    {
-        foreach (GameObject planet in _planetList)
-        {
-            int countShips = planet.GetComponent<CounterPower>().ships / 2;
-            planet.GetComponent<CounterPower>().DecreseCoutner(countShips);
-            for (int i = 0; countShips > 2 && i < countShips; i++)
-            {
-                
-                var ship = Instantiate(_ships);
-                Debug.Log("target pos: " + targetPoint);
-                ship.transform.position = planet.transform.position + (targetPoint - planet.transform.position).normalized * _koefmargin;
-                Debug.DrawLine(planet.transform.position, ship.transform.position, Color.white);
-                ship.GetComponent<MoverShip>().setTarget(targetPoint);
-                ship.GetComponent<AttackPlanet>().setTarget(targetPoint);
-                float angle = 0;
-                Vector3 relative = ship.transform.InverseTransformPoint(targetPoint);
-                angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-                ship.transform.Rotate(0, 0, -angle);
-                yield return new WaitForSeconds(_timeBeetweenSpawn);
-            }
+   
 
-        }
-    }
+    
+
 }
    

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 public class GeneratePlanets : MonoBehaviour
 {
+    static public UnityEvent<List<GameObject>> OnGeneration = new UnityEvent<List<GameObject>>(); 
     [SerializeField]
     private LevelData _levelData;
     [SerializeField]
@@ -32,9 +33,9 @@ public class GeneratePlanets : MonoBehaviour
         _planets[Random.Range(0, _planets.Count - 1)].GetComponent<Player>().changeSide("Player");
 
         for(int i = 0; i < (int)_levelData.difficultie+1; i++)     
-            _planets.FindAll(x => x.tag == "Neutral")[Random.Range(0,_planets.Count-(i+1))].GetComponent<Player>().changeSide("Enemy");            
-        
+            _planets.FindAll(x => x.tag == "Neutral")[Random.Range(0,_planets.Count-(i+1))].GetComponent<Player>().changeSide("Enemy");
 
+        OnGeneration.Invoke(_planets);
     }
 
     private Vector2 FindPlace(float merge)

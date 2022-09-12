@@ -15,4 +15,4 @@ MonoBehaviour:
   _countPlanet: 6
   _diff: 0
   _startShipsOnPlanet: 50
-  _distanceForNeighboring: 6
+  _distanceForNeighboring: 4

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7788629006099973401}
   - component: {fileID: 935469564}
   - component: {fileID: 6521814340918803318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 7519209579905738294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.271881, y: -1.9246546, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -238,8 +238,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.98
-  m_AngularDrag: 0
+  m_LinearDrag: 0.74
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _acceleration: 1
+  _angleSpeed: 10
 --- !u!114 &6521814340918803318
 MonoBehaviour:
   m_ObjectHideFlags: 0

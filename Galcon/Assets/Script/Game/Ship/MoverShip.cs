@@ -8,6 +8,8 @@ public class MoverShip : MonoBehaviour
     [SerializeField]
     private float _acceleration;
     private Rigidbody2D _rigidbody2D;
+    [SerializeField]
+    private float _angleSpeed;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -18,13 +20,20 @@ public class MoverShip : MonoBehaviour
         _target = target;
         Debug.Log(target);
     }
-    void Update()
+    void FixedUpdate()
     {
         if(_target != null)
         {
             var direction = (_target - (Vector2)transform.position).normalized * _acceleration;
-
-            _rigidbody2D.AddForce(direction);
+            var directionAngle = _target - (Vector2)transform.position;
+            Quaternion rotation = Quaternion.LookRotation(transform.forward,directionAngle);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _angleSpeed * Time.deltaTime);
+            _rigidbody2D.AddForce(transform.up);
         }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log("Force right" + transform.right);
+        GetComponent<Rigidbody2D>().AddForce(transform.right * 4f);
     }
 }

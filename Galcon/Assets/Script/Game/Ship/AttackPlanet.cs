@@ -14,11 +14,10 @@ public class AttackPlanet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log((Vector2)collision.gameObject.transform.position + " = " + _targetPosition);
         if ((Vector2)collision.collider.transform.position == _targetPosition)
         {
-            collision.gameObject.GetComponent<CounterPower>().DecreseCoutner(damage);
+            collision.gameObject.GetComponent<CounterPower>().TakeDamge(damage, this.gameObject);
             Destroy(this.gameObject);
-        } 
+        }
     }
 }

@@ -23,10 +23,26 @@ public class CounterPower : MonoBehaviour
     public void DecreseCoutner(int damage)
     {
         _shipCounter -= damage;
-        _fieldText.text = _shipCounter.ToString();
-        if (_shipCounter <= 0)
+        if (_shipCounter < 1)
+            _shipCounter = 0;
+    }
+    public void TakeDamge(int damage, GameObject ship)
+    {
+        if (ship.tag != this.tag)
         {
-            this.GetComponent<Player>().changeSide("Player");
+            _shipCounter -= damage;
+            _fieldText.text = _shipCounter.ToString();
+            if (_shipCounter <= 0)
+            {
+                Debug.Log(ship.tag);
+                this.GetComponent<Player>().changeSide(ship.tag);
+                StopAllCoroutines();
+                StartCoroutine(Counter());
+            }
+        }
+        if(ship.tag == tag)
+        {
+            _shipCounter += damage;
         }
     }
     IEnumerator Counter()
